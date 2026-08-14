@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Açaí da Hora - O Melhor Açaí da Cidade</title>
+    <style>
+        :root {
+            --purple-dark: #2A0845;
+            --purple-main: #4B0082;
+            --purple-light: #6A0DAD;
+            --green-accent: #2ECC71;
+            --bg-light: #F9F6FC;
+            --text-dark: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding-bottom: 80px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--purple-dark), var(--purple-light));
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .status-bar {
+            background-color: var(--green-accent);
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            color: var(--purple-dark);
+            border-bottom: 3px solid var(--purple-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* Banner Promocional / Sobre */
+        .hero-banner {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hero-img {
+            flex: 1 1 300px;
+            background-image: url('https://via.placeholder.com/600x400?text=Sua+Foto+Aqui'); /* SUBSTUITUA AQUI */
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+        }
+
+        .hero-text {
+            flex: 1 1 300px;
+            padding: 1.5rem;
+        }
+
+        /* Cardápio & Montador */
+        .step-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            color: var(--purple-main);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .option-card {
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-card:hover {
+            border-color: var(--purple-light);
+        }
+
+        .option-card img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card input {
+            margin-top: 0.5rem;
+        }
+
+        /* Formulário de Entrega */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #CCC;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        /* Carrinho Fixo no Rodapé */
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--purple-dark);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+        }
+
+        .cart-info {
+            font-size: 1.1rem;
+        }
+
+        .btn-order {
+            background-color: var(--green-accent);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-order:hover {
+            background-color: #27ae60;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="status-bar">
+        🟢 Aberto agora • Entregas das 14h às 22h
+    </div>
+
+    <header>
+        <h1>🍇 AÇAÍ DA HORA 🍇</h1>
+        <p>O açaí mais cremoso e recheado da região!</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="hero-banner">
+            <div class="hero-img"></div>
+            <div class="hero-text">
+                <h2>Monte do seu jeito!</h2>
+                <p>Escolha o tamanho, adicione seus acompanhamentos favoritos e receba na sua casa bem geladinho.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Faça seu Pedido</h2>
+
+        <form id="acaiForm">
+            <div class="step-box">
+                <div class="step-title">1. Escolha o Tamanho</div>
+                <div class="options-grid">
+                    
+                    <label class="option-card">
+                        <img src="https://via.placeholder.com/100?text=300ml" alt="Açaí 300ml">
+                        <strong>300ml</strong><br>
+                        <span>R$ 14,00</span><br>
+                        <input type="radio" name="tamanho" value="300ml" data-preco="14.00" required onclick="calcularTotal()">
+                    </label>
+
+                    <label class="option-card">
+                        <img src="https://via.placeholder.com/100?text=500ml" alt="Açaí 500ml">
+                        <strong>500ml</strong><br>
+                        <span>R$ 18,00</span><br>
+                        <input type="radio" name="tamanho" value="500ml" data-preco="18.00" onclick="calcularTotal()">
+                    </label>
+
+                    <label class="option-card">
+                        <img src="https://via.placeholder.com/100?text=700ml" alt="Açaí 700ml">
+                        <strong>700ml</strong><br>
+                        <span>R$ 24,00</span><br>
+                        <input type="radio" name="tamanho" value="700ml" data-preco="24.00" onclick="calcularTotal()">
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-title">2. Escolha os Acompanhamentos</div>
+                <div class="options-grid">
+                    
+                    <label class="option-card">
+                        <img src="https://via.placeholder.com/100?text=Leite+em+P%C3%B3" alt="Leite em Pó">
+                        <strong>Leite em Pó</strong><br>
+                        <span>Grátis</span><br>
+                        <input type="checkbox" name="adicional" value="Leite em Pó" data-preco="0.00" onclick="calcularTotal()">
+                    </label>
+
+                    <label class="option-card">
+                        <img src="https://via.placeholder.com/100?text=Banana" alt="Banana">
+                        <strong>Banana</strong><br>
+                        <span>Grátis</span><br>
+                        <input type="checkbox" name="adicional" value="Banana" data-preco="0.00" onclick="calcularTotal()">
+                    </label>
+
+                    <label class="option-card">
+                        <img src="https://via.placeholder.com/100?text=Morango" alt="Morango">
+                        <strong>Morango</strong><br>
+                        <span>+ R$ 2,50</span><br>
+                        <input type="checkbox" name="adicional" value="Morango" data-preco="2.50" onclick="calcularTotal()">
+                    </label>
+
+                    <label class="option-card">
+                        <img src="https://via.placeholder.com/100?text=Nutella" alt="Nutella">
+                        <strong>Nutella</strong><br>
+                        <span>+ R$ 4,00</span><br>
+                        <input type="checkbox" name="adicional" value="Nutella" data-preco="4.00" onclick="calcularTotal()">
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-title">3. Dados de Entrega</div>
+                
+                <div class="form-group">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" required placeholder="Digite seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço Completo:</label>
+                    <input type="text" id="endereco" required placeholder="Rua, Número, Bairro">
+                </div>
+
+                <div class="form-group">
+                    <label for="pagamento">Forma de Pagamento:</label>
+                    <select id="pagamento" required>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão na Entrega">Cartão na Entrega</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <h2 class="section-title">Onde Estamos</h2>
+        <div class="step-box" style="text-align: center;">
+            <p>📍 Rua do Açaí, 123 - Centro</p>
+            <p>📸 Siga-nos no Instagram: <strong>@acaidahora.oficial</strong></p>
+        </div>
+
+    </div>
+
+    <div class="cart-bar">
+        <div class="cart-info">
+            Total: <strong id="totalValue">R$ 0,00</strong>
+        </div>
+        <button type="button" class="btn-order" onclick="enviarPedido()">Finalizar Pedido 🚀</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Açaí da Hora - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // DIGITE SEU NÚMERO DO WHATSAPP AQUI (Com DDD, apenas números)
+        const SEU_NUMERO_WHATSAPP = "5541999999999"; 
+
+        function calcularTotal() {
+            let total = 0;
+            
+            // Soma o tamanho
+            const tamanhoSelecionado = document.querySelector('input[name="tamanho"]:checked');
+            if (tamanhoSelecionado) {
+                total += parseFloat(tamanhoSelecionado.getAttribute('data-preco'));
+            }
+
+            // Soma adicionais
+            const adicionais = document.querySelectorAll('input[name="adicional"]:checked');
+            adicionais.forEach(item => {
+                total += parseFloat(item.getAttribute('data-preco'));
+            });
+
+            document.getElementById('totalValue').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            return total;
+        }
+
+        function enviarPedido() {
+            const tamanho = document.querySelector('input[name="tamanho"]:checked');
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const pagamento = document.getElementById('pagamento').value;
+
+            if (!tamanho) {
+                alert("Por favor, selecione o tamanho do seu açaí!");
+                return;
+            }
+
+            if (!nome || !endereco) {
+                alert("Por favor, preencha o seu nome e endereço de entrega!");
+                return;
+            }
+
+            // Pega adicionais marcados
+            const adicionais = [];
+            document.querySelectorAll('input[name="adicional"]:checked').forEach(item => {
+                adicionais.push(item.value);
+            });
+
+            const total = calcularTotal().toFixed(2).replace('.', ',');
+
+            // Formatação da mensagem do WhatsApp
+            let mensagem = `*NOVO PEDIDO - AÇAÍ DA HORA* 🍇%0A%0A`;
+            mensagem += `*Cliente:* ${nome}%0A`;
+            mensagem += `*Endereço:* ${endereco}%0A`;
+            mensagem += `*Pagamento:* ${pagamento}%0A%0A`;
+            mensagem += `*Açaí:* ${tamanho.value}%0A`;
+            mensagem += `*Acompanhamentos:* ${adicionais.length > 0 ? adicionais.join(', ') : 'Nenhum'}%0A%0A`;
+            mensagem += `*TOTAL:* R$ ${total}`;
+
+            // Abre o WhatsApp
+            const url = `https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${mensagem}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
