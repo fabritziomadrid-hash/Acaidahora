@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,10 +26,9 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
-            padding-bottom: 110px;
+            padding-bottom: 120px;
         }
 
-        /* Banner llamativo */
         header {
             background: linear-gradient(135deg, #FF007F, #8A2BE2, #4A0E4E);
             color: white;
@@ -96,7 +95,10 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .option-card:hover {
@@ -115,15 +117,16 @@
         .option-card strong {
             display: block;
             font-size: 0.95rem;
+            margin-bottom: 0.2rem;
         }
 
         .price-tag {
             color: var(--yellow-bright);
             font-weight: bold;
             font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
-        /* Controles de Selección */
         .select-input, .form-control {
             width: 100%;
             padding: 0.8rem;
@@ -139,7 +142,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Badge Pix */
         .pix-badge {
             background-color: var(--green-pix);
             color: white;
@@ -150,7 +152,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Carrito Fijo */
         .cart-bar {
             position: fixed;
             bottom: 0;
@@ -197,7 +198,8 @@
     <div class="container">
 
         <div class="step-box">
-            <div class="step-title">1. ¿Cuántos items vas a pedir?</div>
+            <div class="step-title">Multiplicador de Pedido</div>
+            <label for="cantidad">¿Cuántas veces quieres repetir esta selección?</label>
             <select id="cantidad" class="select-input" onchange="calcularTotal()">
                 <option value="1">x1</option>
                 <option value="2">x2</option>
@@ -212,143 +214,143 @@
             </select>
         </div>
 
-        <h2 class="section-title">Arma tu Açaí</h2>
+        <h2 class="section-title">Opción 1: Arma tu Açaí</h2>
         
         <div class="step-box">
-            <div class="step-title">A. Elige el Tamaño</div>
+            <div class="step-title">1. Elige el Tamaño</div>
             <div class="options-grid">
                 <label class="option-card">
                     <img src="https://via.placeholder.com/150?text=300ml" alt="300ml">
                     <strong>300ml</strong>
-                    <span class="price-tag">R$ 14,00</span><br>
+                    <span class="price-tag">R$ 14,00</span>
                     <input type="radio" name="tamanho_custom" value="300ml" data-preco="14.00" onclick="calcularTotal()">
                 </label>
                 <label class="option-card">
                     <img src="https://via.placeholder.com/150?text=500ml" alt="500ml">
                     <strong>500ml</strong>
-                    <span class="price-tag">R$ 18,00</span><br>
+                    <span class="price-tag">R$ 18,00</span>
                     <input type="radio" name="tamanho_custom" value="500ml" data-preco="18.00" onclick="calcularTotal()">
                 </label>
                 <label class="option-card">
                     <img src="https://via.placeholder.com/150?text=700ml" alt="700ml">
                     <strong>700ml</strong>
-                    <span class="price-tag">R$ 24,00</span><br>
+                    <span class="price-tag">R$ 24,00</span>
                     <input type="radio" name="tamanho_custom" value="700ml" data-preco="24.00" onclick="calcularTotal()">
                 </label>
             </div>
         </div>
 
         <div class="step-box">
-            <div class="step-title">B. Acompañamientos (Hasta 9)</div>
+            <div class="step-title">2. Acompañamientos (9 Opciones)</div>
             <div class="options-grid">
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+1"><strong>Leite em Pó</strong><input type="checkbox" name="acomp" value="Leite em Pó"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+2"><strong>Granola</strong><input type="checkbox" name="acomp" value="Granola"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+3"><strong>Paçoca</strong><input type="checkbox" name="acomp" value="Paçoca"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+4"><strong>M&Ms</strong><input type="checkbox" name="acomp" value="M&Ms"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+5"><strong>Ovomaltine</strong><input type="checkbox" name="acomp" value="Ovomaltine"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+6"><strong>Chocoball</strong><input type="checkbox" name="acomp" value="Chocoball"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+7"><strong>Coco Ralado</strong><input type="checkbox" name="acomp" value="Coco Ralado"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+8"><strong>Bis</strong><input type="checkbox" name="acomp" value="Bis"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Acomp+9"><strong>Gota Chocolate</strong><input type="checkbox" name="acomp" value="Gota Chocolate"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Leite+em+Pó"><strong>Leite em Pó</strong><span class="price-tag">+R$ 1,50</span><input type="checkbox" class="extra-item" name="acomp" value="Leite em Pó" data-preco="1.50" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Granola"><strong>Granola</strong><span class="price-tag">+R$ 1,00</span><input type="checkbox" class="extra-item" name="acomp" value="Granola" data-preco="1.00" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Paçoca"><strong>Paçoca</strong><span class="price-tag">+R$ 1,50</span><input type="checkbox" class="extra-item" name="acomp" value="Paçoca" data-preco="1.50" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=M%26Ms"><strong>M&Ms</strong><span class="price-tag">+R$ 2,00</span><input type="checkbox" class="extra-item" name="acomp" value="M&Ms" data-preco="2.00" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Ovomaltine"><strong>Ovomaltine</strong><span class="price-tag">+R$ 2,00</span><input type="checkbox" class="extra-item" name="acomp" value="Ovomaltine" data-preco="2.00" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Chocoball"><strong>Chocoball</strong><span class="price-tag">+R$ 1,50</span><input type="checkbox" class="extra-item" name="acomp" value="Chocoball" data-preco="1.50" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Coco"><strong>Coco Ralado</strong><span class="price-tag">+R$ 1,00</span><input type="checkbox" class="extra-item" name="acomp" value="Coco Ralado" data-preco="1.00" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Bis"><strong>Bis</strong><span class="price-tag">+R$ 2,00</span><input type="checkbox" class="extra-item" name="acomp" value="Bis" data-preco="2.00" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Gotas"><strong>Gota Chocolate</strong><span class="price-tag">+R$ 2,00</span><input type="checkbox" class="extra-item" name="acomp" value="Gota Chocolate" data-preco="2.00" onclick="calcularTotal()"></label>
             </div>
         </div>
 
         <div class="step-box">
-            <div class="step-title">C. Frutas (Hasta 4)</div>
+            <div class="step-title">3. Frutas (4 Opciones)</div>
             <div class="options-grid">
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Banana"><strong>Banana</strong><input type="checkbox" name="fruta" value="Banana"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Morango"><strong>Morango</strong><input type="checkbox" name="fruta" value="Morango"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Uva"><strong>Uva</strong><input type="checkbox" name="fruta" value="Uva"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Kiwi"><strong>Kiwi</strong><input type="checkbox" name="fruta" value="Kiwi"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Banana"><strong>Banana</strong><span class="price-tag">+R$ 2,00</span><input type="checkbox" class="extra-item" name="fruta" value="Banana" data-preco="2.00" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Morango"><strong>Morango</strong><span class="price-tag">+R$ 3,00</span><input type="checkbox" class="extra-item" name="fruta" value="Morango" data-preco="3.00" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Uva"><strong>Uva</strong><span class="price-tag">+R$ 2,50</span><input type="checkbox" class="extra-item" name="fruta" value="Uva" data-preco="2.50" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Kiwi"><strong>Kiwi</strong><span class="price-tag">+R$ 3,00</span><input type="checkbox" class="extra-item" name="fruta" value="Kiwi" data-preco="3.00" onclick="calcularTotal()"></label>
             </div>
         </div>
 
         <div class="step-box">
-            <div class="step-title">D. Coberturas (Hasta 2)</div>
+            <div class="step-title">4. Coberturas (2 Opciones)</div>
             <div class="options-grid">
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Leite+Cond."><strong>Leite Condensado</strong><input type="checkbox" name="cobertura" value="Leite Condensado"></label>
-                <label class="option-card"><img src="https://via.placeholder.com/100?text=Nutella"><strong>Nutella</strong><input type="checkbox" name="cobertura" value="Nutella"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Leite+Cond."><strong>Leite Condensado</strong><span class="price-tag">+R$ 1,50</span><input type="checkbox" class="extra-item" name="cobertura" value="Leite Condensado" data-preco="1.50" onclick="calcularTotal()"></label>
+                <label class="option-card"><img src="https://via.placeholder.com/100?text=Nutella"><strong>Nutella</strong><span class="price-tag">+R$ 4,00</span><input type="checkbox" class="extra-item" name="cobertura" value="Nutella" data-preco="4.00" onclick="calcularTotal()"></label>
             </div>
         </div>
 
-        <h2 class="section-title">Açaís Listos</h2>
+        <h2 class="section-title">Opción 2: Açaís Listos</h2>
         <div class="step-box">
             <div class="options-grid">
                 <div class="option-card">
-                    <img src="https://via.placeholder.com/150?text=Açai+Tradicional" alt="Açaí Tradicional">
+                    <img src="https://via.placeholder.com/150?text=Tradicional" alt="Açaí Tradicional">
                     <strong>1. Tradicional</strong>
-                    <span class="price-tag">Base R$ 15,00</span>
-                    <select class="select-input" id="pronto_1" data-base="15.00" onchange="calcularTotal()">
-                        <option value="">-- Seleccionar --</option>
-                        <option value="300ml">300ml (+R$0)</option>
-                        <option value="500ml">500ml (+R$5)</option>
-                        <option value="700ml">700ml (+R$10)</option>
+                    <span class="price-tag">Desde R$ 15,00</span>
+                    <select class="select-input pronto-item" id="pronto_1" data-base="15.00" onchange="calcularTotal()">
+                        <option value="" data-add="0">-- No añadir --</option>
+                        <option value="300ml" data-add="0">300ml (R$ 15,00)</option>
+                        <option value="500ml" data-add="5">500ml (R$ 20,00)</option>
+                        <option value="700ml" data-add="10">700ml (R$ 25,00)</option>
                     </select>
                 </div>
 
                 <div class="option-card">
-                    <img src="https://via.placeholder.com/150?text=Açai+Ninho+Nutella" alt="Ninho e Nutella">
+                    <img src="https://via.placeholder.com/150?text=Ninho+Nutella" alt="Ninho e Nutella">
                     <strong>2. Ninho & Nutella</strong>
-                    <span class="price-tag">Base R$ 20,00</span>
-                    <select class="select-input" id="pronto_2" data-base="20.00" onchange="calcularTotal()">
-                        <option value="">-- Seleccionar --</option>
-                        <option value="300ml">300ml (+R$0)</option>
-                        <option value="500ml">500ml (+R$5)</option>
-                        <option value="700ml">700ml (+R$10)</option>
+                    <span class="price-tag">Desde R$ 20,00</span>
+                    <select class="select-input pronto-item" id="pronto_2" data-base="20.00" onchange="calcularTotal()">
+                        <option value="" data-add="0">-- No añadir --</option>
+                        <option value="300ml" data-add="0">300ml (R$ 20,00)</option>
+                        <option value="500ml" data-add="5">500ml (R$ 25,00)</option>
+                        <option value="700ml" data-add="10">700ml (R$ 30,00)</option>
                     </select>
                 </div>
 
                 <div class="option-card">
-                    <img src="https://via.placeholder.com/150?text=Açai+Tropical" alt="Açaí Tropical">
-                    <strong>3. Tropical (Frutas)</strong>
-                    <span class="price-tag">Base R$ 18,00</span>
-                    <select class="select-input" id="pronto_3" data-base="18.00" onchange="calcularTotal()">
-                        <option value="">-- Seleccionar --</option>
-                        <option value="300ml">300ml (+R$0)</option>
-                        <option value="500ml">500ml (+R$5)</option>
-                        <option value="700ml">700ml (+R$10)</option>
+                    <img src="https://via.placeholder.com/150?text=Tropical" alt="Açaí Tropical">
+                    <strong>3. Tropical</strong>
+                    <span class="price-tag">Desde R$ 18,00</span>
+                    <select class="select-input pronto-item" id="pronto_3" data-base="18.00" onchange="calcularTotal()">
+                        <option value="" data-add="0">-- No añadir --</option>
+                        <option value="300ml" data-add="0">300ml (R$ 18,00)</option>
+                        <option value="500ml" data-add="5">500ml (R$ 23,00)</option>
+                        <option value="700ml" data-add="10">700ml (R$ 28,00)</option>
                     </select>
                 </div>
 
                 <div class="option-card">
-                    <img src="https://via.placeholder.com/150?text=Açai+Power" alt="Açaí Power">
+                    <img src="https://via.placeholder.com/150?text=Power" alt="Açaí Power">
                     <strong>4. Power Energético</strong>
-                    <span class="price-tag">Base R$ 22,00</span>
-                    <select class="select-input" id="pronto_4" data-base="22.00" onchange="calcularTotal()">
-                        <option value="">-- Seleccionar --</option>
-                        <option value="300ml">300ml (+R$0)</option>
-                        <option value="500ml">500ml (+R$5)</option>
-                        <option value="700ml">700ml (+R$10)</option>
+                    <span class="price-tag">Desde R$ 22,00</span>
+                    <select class="select-input pronto-item" id="pronto_4" data-base="22.00" onchange="calcularTotal()">
+                        <option value="" data-add="0">-- No añadir --</option>
+                        <option value="300ml" data-add="0">300ml (R$ 22,00)</option>
+                        <option value="500ml" data-add="5">500ml (R$ 27,00)</option>
+                        <option value="700ml" data-add="10">700ml (R$ 32,00)</option>
                     </select>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">Combos Especiales</h2>
+        <h2 class="section-title">Opción 3: Combos Especiales</h2>
         <div class="step-box">
             <div class="options-grid">
                 <label class="option-card">
                     <img src="https://via.placeholder.com/150?text=Combo+Casal" alt="Combo Casal">
-                    <strong>Combo Casal</strong><br>
-                    <span>2x 500ml + 4 Acomp</span><br>
-                    <span class="price-tag">R$ 35,00</span><br>
-                    <input type="checkbox" name="combo" value="Combo Casal" data-preco="35.00" onclick="calcularTotal()">
+                    <strong>Combo Casal</strong>
+                    <span>2x 500ml + 4 Acomp</span>
+                    <span class="price-tag">R$ 35,00</span>
+                    <input type="checkbox" class="combo-item" value="Combo Casal" data-preco="35.00" onclick="calcularTotal()">
                 </label>
 
                 <label class="option-card">
                     <img src="https://via.placeholder.com/150?text=Combo+Galera" alt="Combo Galera">
-                    <strong>Combo Galera</strong><br>
-                    <span>3x 700ml + Barca</span><br>
-                    <span class="price-tag">R$ 65,00</span><br>
-                    <input type="checkbox" name="combo" value="Combo Galera" data-preco="65.00" onclick="calcularTotal()">
+                    <strong>Combo Galera</strong>
+                    <span>3x 700ml + Barca</span>
+                    <span class="price-tag">R$ 65,00</span>
+                    <input type="checkbox" class="combo-item" value="Combo Galera" data-preco="65.00" onclick="calcularTotal()">
                 </label>
 
                 <label class="option-card">
                     <img src="https://via.placeholder.com/150?text=Combo+Kids" alt="Combo Kids">
-                    <strong>Combo Kids</strong><br>
-                    <span>1x 300ml + Confetti</span><br>
-                    <span class="price-tag">R$ 16,00</span><br>
-                    <input type="checkbox" name="combo" value="Combo Kids" data-preco="16.00" onclick="calcularTotal()">
+                    <strong>Combo Kids</strong>
+                    <span>1x 300ml + Confetti</span>
+                    <span class="price-tag">R$ 16,00</span>
+                    <input type="checkbox" class="combo-item" value="Combo Kids" data-preco="16.00" onclick="calcularTotal()">
                 </label>
             </div>
         </div>
@@ -381,36 +383,42 @@
     </div>
 
     <script>
-        const SEU_NUMERO_WHATSAPP = "5541999999999"; // Cambia por tu número real
+        const SEU_NUMERO_WHATSAPP = "5541999999999"; // Cambia por tu número de WhatsApp
 
         function calcularTotal() {
             let totalUnitario = 0;
 
-            // 1. Açaí Custom
+            // 1. Tamaño Custom
             const tamanhoCustom = document.querySelector('input[name="tamanho_custom"]:checked');
             if (tamanhoCustom) {
                 totalUnitario += parseFloat(tamanhoCustom.getAttribute('data-preco'));
             }
 
-            // 2. Açaís Listos
-            for(let i = 1; i <= 4; i++) {
-                const select = document.getElementById(`pronto_${i}`);
-                if(select && select.value !== "") {
-                    let base = parseFloat(select.getAttribute('data-base'));
-                    if(select.value === "500ml") base += 5;
-                    if(select.value === "700ml") base += 10;
-                    totalUnitario += base;
-                }
-            }
+            // 2. Acompañamientos, Frutas y Coberturas
+            const extras = document.querySelectorAll('.extra-item:checked');
+            extras.forEach(item => {
+                totalUnitario += parseFloat(item.getAttribute('data-preco'));
+            });
 
-            // 3. Combos
-            const combos = document.querySelectorAll('input[name="combo"]:checked');
+            // 3. Açaís Listos
+            const prontos = document.querySelectorAll('.pronto-item');
+            prontos.forEach(select => {
+                if (select.value !== "") {
+                    const base = parseFloat(select.getAttribute('data-base'));
+                    const selectedOption = select.options[select.selectedIndex];
+                    const adicional = parseFloat(selectedOption.getAttribute('data-add') || 0);
+                    totalUnitario += (base + adicional);
+                }
+            });
+
+            // 4. Combos
+            const combos = document.querySelectorAll('.combo-item:checked');
             combos.forEach(item => {
                 totalUnitario += parseFloat(item.getAttribute('data-preco'));
             });
 
-            // Multiplicador de cantidad
-            const cantidad = parseInt(document.getElementById('cantidad').value);
+            // Multiplicador
+            const cantidad = parseInt(document.getElementById('cantidad').value) || 1;
             const totalFinal = totalUnitario * cantidad;
 
             document.getElementById('totalValue').innerText = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
@@ -433,23 +441,36 @@
                 return;
             }
 
-            // Recopilar Acompañamientos
-            let acomps = [];
-            document.querySelectorAll('input[name="acomp"]:checked').forEach(i => acomps.push(i.value));
-            document.querySelectorAll('input[name="fruta"]:checked').forEach(i => acomps.push(i.value));
-            document.querySelectorAll('input[name="cobertura"]:checked').forEach(i => acomps.push(i.value));
+            let resumen = [];
 
-            // Formatear Mensaje
+            // Tamaño Custom
+            const tamanhoCustom = document.querySelector('input[name="tamanho_custom"]:checked');
+            if (tamanhoCustom) {
+                resumen.push(`Açaí Custom: ${tamanhoCustom.value}`);
+            }
+
+            // Extras
+            document.querySelectorAll('.extra-item:checked').forEach(i => resumen.push(`Extra: ${i.value}`));
+
+            // Prontos
+            for(let i = 1; i <= 4; i++) {
+                const select = document.getElementById(`pronto_${i}`);
+                if(select && select.value !== "") {
+                    const nombreItem = select.parentElement.querySelector('strong').innerText;
+                    resumen.push(`${nombreItem} (${select.value})`);
+                }
+            }
+
+            // Combos
+            document.querySelectorAll('.combo-item:checked').forEach(i => resumen.push(`Combo: ${i.value}`));
+
+            // Formato WhatsApp
             let mensaje = `*PEDIDO AÇAÍ DA HORA* 🍇%0A%0A`;
-            mensaje += `*Cantidad de Combos/Kits:* x${cantidad}%0A`;
+            mensaje += `*Multiplicador:* x${cantidad}%0A`;
             mensaje += `*Cliente:* ${nome}%0A`;
             mensaje += `*Dirección:* ${endereco}%0A`;
             mensaje += `*Pago:* PIX ❖%0A%0A`;
-            
-            if(acomps.length > 0) {
-                mensaje += `*Ingredientes seleccionados:* ${acomps.join(', ')}%0A%0A`;
-            }
-
+            mensaje += `*Detalle del pedido:*%0A- ${resumen.join('%0A- ')}%0A%0A`;
             mensaje += `*TOTAL A PAGAR:* R$ ${total.toFixed(2).replace('.', ',')}`;
 
             const url = `https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${mensaje}`;
